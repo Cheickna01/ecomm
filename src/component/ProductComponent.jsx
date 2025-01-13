@@ -22,7 +22,7 @@ export default function ProductComponent({ produits,utoken,setCloseModal }) {
 
 
   function handleClick() {
-      fetch("http://localhost:4002/achats", {
+      fetch("https://ecomm-backend-6vi2.onrender.com/achats", {
         method: "POST",
         body: JSON.stringify({ id, title, img, info, price, promo, inCart, count }),
         headers: {
