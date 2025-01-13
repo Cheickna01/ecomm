@@ -39,6 +39,7 @@ function AddProduct({ addProduct, products, setProducts, token }) {
         }
       );
       setUploadStatus("Téléchargement réussi : " + response1.data);
+      console.log(response1.data)
 
       const response2 = await axios.post(
         "https://ecomm-backend-6vi2.onrender.com/produits",
@@ -46,7 +47,7 @@ function AddProduct({ addProduct, products, setProducts, token }) {
           id,
           category_id,
           title,
-          img: "/img/" + response1.data,
+          img: "/img/" + response1.data.fileUrl,
           promo,
           price,
           info,
