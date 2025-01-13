@@ -1,5 +1,6 @@
 import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
 import { useState } from "react";
+import axios from "axios";
 export default function ContactComponent({ Datas, setDatas }) {
   const {
     prenom,
@@ -22,11 +23,24 @@ export default function ContactComponent({ Datas, setDatas }) {
     email: "",
     message: "",
   });
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setIsSubmit(true);
 
     if (validationCheck()) {
+      try {
+        const response = await axios.post("http://localhost:4002/send-email", {
+          prenom,
+          nom,
+          email,
+          telephone,
+          objet,
+          message,
+        });
+  
+      }catch (e){
+        console.error("Erreur lors de l'envoi de l'e-mail :", e);
+      }
       console.log("envoi");
       setDatas({
         prenom: "",

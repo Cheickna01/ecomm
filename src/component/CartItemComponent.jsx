@@ -48,7 +48,7 @@ export default function CartItemComponent({produit,userProduct,utoken}) {
           <div className="row mx-1 cartItem">
             <div className="col-lg-2 mx-auto my-lg-auto">
               <img
-                src={"/img" + img}
+                src={img? "/img/" + img : "/img/img/273800-P5V8J7-289.jpg"}
                 alt=""
                 width="100"
                 className="img-fluid rounded"

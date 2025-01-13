@@ -1,55 +1,66 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import Title from "./TitleComponents";
 import AdminPrincipal from "./AdminPrincipal";
-export default function UpdateProduct({token}) {
-    const params = useParams()
-    const productID = params.id
-    const [id, setId] = useState(productID);
-    const [title, setNom] = useState("");
-    const [info, setInfo] = useState("");
-    const [price, setPrice] = useState("");
-    const [category_id, setCategorieId] = useState("");
-    const [img, setImg] = useState("");
-    const [promo, setPromo] = useState("");
-    const [count, setCount] = useState("");
-    const [result,setResult] = useState("")
+import { useEffect } from "react";
+import { storeCategory } from "../shared/data";
+export default function UpdateProduct({ token, produits }) {
+  const params = useParams();
+  const productID = params.id;
+  const prod = produits.filter((p) => p.id == productID)[0];
+  const [id, setId] = useState(productID);
+  const [title, setNom] = useState(prod.title);
+  const [info, setInfo] = useState(prod.info);
+  const [price, setPrice] = useState(prod.price);
+  const [category_id, setCategorieId] = useState(
+    prod.category_id
+  );
+  const [img, setImg] = useState(prod.img);
+  const [promo, setPromo] = useState(prod.promo);
+  const [count, setCount] = useState(prod.count);
+  const [result, setResult] = useState("");
 
-    function handleSubmit(e){
-        e.preventDefault()
-        if(window.confirm("voulez-vous enregistrer les modifications?")){
-            fetch(`http://localhost:4002/produits/update/${productID}`,{
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    id,
-                    category_id,
-                    title,
-                    img,
-                    promo,
-                    price,
-                    info,
-                    count,
-                    total: price * count,
-                  })
-              }).then(req=>req.json()).then(res=>setResult(res))
-        }
+  const catg = storeCategory
+    .filter((e) => e.id == category_id)
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (window.confirm("voulez-vous enregistrer les modifications?")) {
+      fetch(`http://localhost:4002/produits/update/${productID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          id,
+          category_id,
+          title,
+          img,
+          promo,
+          price,
+          info,
+          count,
+          total: price * count,
+        }),
+      })
+        .then((req) => req.json())
+        .then((res) => setResult(res));
     }
+  }
   return (
     <div className="container">
-        <AdminPrincipal/>
-        <Title name="modification du" title="produit"/>
-        <form onSubmit={handleSubmit} className="text-center">
+      <AdminPrincipal />
+      <Title name="modification du" title="produit" />
+      <form onSubmit={handleSubmit} className="text-center">
+        Num:{" "}
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="text"
-          placeholder="ID du produit"
+          placeholder="Numéro du produit"
           value={id}
-          onChange={(e) => setId(e.target.value)}
+          onChange={(e) => setId(parseInt(e.target.value))}
         />
+        NOM DU PRODUIT:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="text"
@@ -57,6 +68,7 @@ export default function UpdateProduct({token}) {
           value={title}
           onChange={(e) => setNom(e.target.value)}
         />
+        DESCRIPTION:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-4"
           type="text"
@@ -64,6 +76,7 @@ export default function UpdateProduct({token}) {
           value={info}
           onChange={(e) => setInfo(e.target.value)}
         />
+        PRIX:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="number"
@@ -71,13 +84,21 @@ export default function UpdateProduct({token}) {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-        <input
+        CATEGORIE:
+        <select
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
-          type="text"
-          placeholder="Catégorie"
-          value={category_id}
-          onChange={(e) => setCategorieId(e.target.value)}
-        />
+          onChange={(e) => setCategorieId(parseInt(e.target.value))}
+        >
+          <option value={catg.map(e=>e.id)}>{catg.map(e=>e.name)}</option>
+          <option value="0">chaussure</option>
+          <option value="1">chemise</option>
+          <option value="2">montre</option>
+          <option value="3">telephone</option>
+          <option value="4">ordinateur</option>
+          <option value="5">electronique</option>
+          <option value="6">electromenager</option>
+        </select>
+        IMAGE:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="text"
@@ -85,6 +106,7 @@ export default function UpdateProduct({token}) {
           value={img}
           onChange={(e) => setImg(e.target.value)}
         />
+        PROMO:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="number"
@@ -92,6 +114,7 @@ export default function UpdateProduct({token}) {
           value={promo}
           onChange={(e) => setPromo(e.target.value)}
         />
+        QUANTITE:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="number"
@@ -108,5 +131,5 @@ export default function UpdateProduct({token}) {
       </form>
       {result && <p className="text-green-600 ">{result}</p>}
     </div>
-  )
+  );
 }

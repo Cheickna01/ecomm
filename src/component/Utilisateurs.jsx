@@ -53,17 +53,17 @@ export default function Utilisateurs({ token }) {
               <p className="col-4">{u.email}</p>
               <div className="col-4 font-bold">
                 <Button className="btn outline buttonCart buttonCuserUpdate">
-                  <Link to={"/dashboard/userupdate/"+ u.email}>
+                  <Link to={"/dashboard/userupdate/"+ u.email} className="mfy">
                     {" "}
                     <span class="fas fa-user-edit"></span>{" "}
                   </Link>
                 </Button>
-                <Button
-                  className="btn outline buttonCart buttonCartDelete"
-                  onClick={() => handleDelete(u.email)}
-                >
-                  <span className="fas fa-times m-auto"></span>
-                </Button>
+                  <Button
+                    className="btn outline buttonCart buttonCartDelete"
+                    onClick={() => handleDelete(u.email)}
+                  >
+                    <span className="fas fa-times m-auto"></span>
+                  </Button>
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Cheickna01.github.io/e-commerce",
+  "homepage": "https://Cheickna01.github.io/ecomm",
   "name": "ty-shop",
   "version": "0.1.0",
   "private": true,
@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
-    "gh-pages": "^6.1.1",
+    "multer": "^1.4.5-lts.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
@@ -23,8 +23,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -49,6 +47,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3"
   }

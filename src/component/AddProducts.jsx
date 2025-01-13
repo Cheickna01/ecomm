@@ -1,38 +1,67 @@
 import React, { useState } from "react";
 import axios from "axios"
 import AdminPrincipal from "./AdminPrincipal";
+import { storeCategory } from "../shared/data";
 function AddProduct({ addProduct,products,setProducts,token }) {
   const [id, setId] = useState("");
   const [title, setNom] = useState("");
   const [info, setInfo] = useState("");
   const [price, setPrice] = useState("");
-  const [category_id, setCategorieId] = useState("");
+  const [category_id, setCategorieId] = useState(0);
   const [img, setImg] = useState("");
   const [promo, setPromo] = useState("");
   const [count, setCount] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+    const [uploadStatus, setUploadStatus] = useState("");
+    console.log(selectedFile)
+
+    
+  
+    const handleFileChange = (e) => {
+      setSelectedFile(e.target.files[0]);
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      try {
-        const response = await axios.post('http://localhost:4002/produits', {
-          id,
-          category_id,
-          title,
-          img,
-          promo,
-          price,
-          info,
-          count,
-          total: price * count,
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-      } catch (error) {
-        console.error("Erreur d'ajout du produit", error);
-      }
+    if (!selectedFile) {
+      setUploadStatus("Veuillez sélectionner un fichier.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    try {
+      const response1 = await axios.post("http://localhost:4002/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setUploadStatus("Téléchargement réussi : " + response1.data);
+
+      const response2 = await axios.post('http://localhost:4002/produits', {
+        id,
+        category_id,
+        title,
+        img: "/img/"+response1.data,
+        promo,
+        price,
+        info,
+        count,
+        total: price * count,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      setUploadStatus("Erreur lors du téléchargement.");
+      console.error(error);
+      console.error("Erreur d'ajout du produit", error);
+    }
+
+
       setNom("");
       setInfo("");
       setPrice("");
@@ -46,14 +75,16 @@ function AddProduct({ addProduct,products,setProducts,token }) {
   return (
     <div className="container mb-10">
         <AdminPrincipal name={"Ajout"} title={"Produit"}/>
-      <form onSubmit={handleSubmit} className="text-center">
+      <form onSubmit={handleSubmit} className="text-center" action="/upload" method="POST" encType="multipart/form-data">
+        NUM:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="text"
-          placeholder="ID du produit"
+          placeholder="Numéro du produit"
           value={id}
           onChange={(e) => setId(e.target.value)}
         />
+        NOM:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="text"
@@ -61,6 +92,7 @@ function AddProduct({ addProduct,products,setProducts,token }) {
           value={title}
           onChange={(e) => setNom(e.target.value)}
         />
+        DESCRIPTION:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-4"
           type="text"
@@ -68,6 +100,7 @@ function AddProduct({ addProduct,products,setProducts,token }) {
           value={info}
           onChange={(e) => setInfo(e.target.value)}
         />
+        PRIX:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="number"
@@ -75,20 +108,31 @@ function AddProduct({ addProduct,products,setProducts,token }) {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-        <input
+        CATEGORIE:
+        <select
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
-          type="text"
-          placeholder="Catégorie"
           value={category_id}
-          onChange={(e) => setCategorieId(e.target.value)}
-        />
+          onChange={(e) => setCategorieId(parseInt(e.target.value))}
+        >
+          <option value="0">chaussure</option>
+          <option value="1">chemise</option>
+          <option value="2">montre</option>
+          <option value="3">telephone</option>
+          <option value="4">ordinateur</option>
+          <option value="5">electronique</option>
+          <option value="6">electromenager</option>
+        </select>
+        IMAGE:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
-          type="text"
+          type="file"
+          name="image" 
+          accept="image/*"
           placeholder="Image"
           value={img}
-          onChange={(e) => setImg(e.target.value)}
+          onChange={handleFileChange}
         />
+        PROMO:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="number"
@@ -96,6 +140,7 @@ function AddProduct({ addProduct,products,setProducts,token }) {
           value={promo}
           onChange={(e) => setPromo(e.target.value)}
         />
+        QUANTITE:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="number"

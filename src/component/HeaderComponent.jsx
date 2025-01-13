@@ -111,7 +111,7 @@ export default function Header({
   }
 
   return (
-    <div>
+    <div id="header">
       <BeforeHeader username={username} utoken={utoken}/>
       <Navbar
         light

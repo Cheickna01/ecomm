@@ -45,7 +45,7 @@ export default function ProductComponent({ produits,utoken,setCloseModal }) {
         <div className="product-grid mb-4">
           <div className="product-img">
             <Link to={"/home/" + produits.id}>
-              <img
+              <img  
                 className="pic-1 img-responsive"
                 src={produits.img? "/img/" + produits.img : "/img/img/273800-P5V8J7-289.jpg"}
                 alt="Produit"

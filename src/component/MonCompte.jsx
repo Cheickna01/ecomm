@@ -57,7 +57,7 @@ export default function MonCompte({ utoken, setUToken }) {
       </table>
       <div className="moncompte">
         <Button className="mr-4">
-          <Link to={"/userupdate/" + info.email}>Modifier mon compte</Link>
+          <Link to={"/userupdate/" + info.email} className="mfy">Modifier mon compte</Link>
         </Button>
         <Button className="del" onClick={handledelete}>
           Supprimer mon compte

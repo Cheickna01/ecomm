@@ -109,8 +109,6 @@
   filter: blur(0px);
 }
 
-
-
 /************************************************************************************************/
 
 
@@ -334,4 +332,38 @@
 
 .moncompte .del{
   background-color: #fa3c3c;
+}
+
+.mfy{
+  color: #fff;
+  text-decoration: none;
+}
+
+footer{
+  background-color: #3b3a32;
+  color: #eee;
+}
+
+footer li{
+  background-color: #ffbb02;
+  border-radius: 5px;
+  padding: 5px;
+  width: 45px;
+}
+
+footer .container a{
+  color: #eee;
+  text-decoration: none;
+}
+
+footer button{
+  background-color: #ffbb02;
+  width: 45px;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.toUp a{
+  color: #eee;
+  text-decoration: none;
 }
