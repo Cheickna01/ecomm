@@ -81,7 +81,7 @@ function AddProduct({ addProduct, products, setProducts, token }) {
       <form
         onSubmit={handleSubmit}
         className="text-center"
-        action="/upload"
+        action="https://ecomm-backend-6vi2.onrender.com/upload"
         method="POST"
         encType="multipart/form-data"
       >
