@@ -20,7 +20,7 @@ export default function CartItemComponent({produit,userProduct,utoken}) {
       })
     }
     function handleAdd(){
-      fetch(`http://localhost:4002/achats/augmenter/${produit.id}`,{
+      fetch(`https://ecomm-backend-6vi2.onrender.com/achats/augmenter/${produit.id}`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export default function CartItemComponent({produit,userProduct,utoken}) {
     }
 
     function handlesup(){
-      fetch(`http://localhost:4002/achats/supprimer/${produit.id}`,{
+      fetch(`https://ecomm-backend-6vi2.onrender.com/achats/supprimer/${produit.id}`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
