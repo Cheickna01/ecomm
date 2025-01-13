@@ -88,13 +88,13 @@ export default function Main() {
       <Routes>
         <Route
           path="/"
-          element={
+          element={!token ?
             <Home
               produits={produits}
               utoken={utoken}
               setCloseModal={setCloseModal}
             />
-          }
+          : <Dashboard token={token} produits={produits} />}
         />
         <Route path="/contact" element={<ContactUs />} />
         <Route
