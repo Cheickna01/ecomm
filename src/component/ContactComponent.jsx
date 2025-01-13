@@ -1,5 +1,6 @@
 import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
 import { useState } from "react";
+import emailjs from "emailjs-com";
 import axios from "axios";
 export default function ContactComponent({ Datas, setDatas }) {
   const {
@@ -28,19 +29,20 @@ export default function ContactComponent({ Datas, setDatas }) {
     setIsSubmit(true);
 
     if (validationCheck()) {
-      try {
-        const response = await axios.post("https://ecomm-backend-6vi2.onrender.com/send-email", {
-          prenom,
-          nom,
-          email,
-          telephone,
-          objet,
-          message,
-        });
-  
-      }catch (e){
-        console.error("Erreur lors de l'envoi de l'e-mail :", e);
-      }
+      emailjs
+      .send(
+        "service_0j3qqpf", // Service ID
+        "template_pkn0aqg", // Template ID
+        Datas,
+        "dnLQqGoN97blOEA94"  // Public Key
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (err) => {
+          console.log("FAILED...", err);
+        })
       console.log("envoi");
       setDatas({
         prenom: "",
