@@ -67,6 +67,7 @@ export default function Main() {
       dispatch(a.RemoveAll());
     }
   }, [utoken, userProduct, dispatch]);
+  console.log(token)
 
   return (
     <>
@@ -89,7 +90,7 @@ export default function Main() {
       <Routes>
         <Route
           path="/"
-          element={!token ?
+          element={(token === "") ?
             <Home
               produits={produits}
               utoken={utoken}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import AdminPrincipal from "./AdminPrincipal";
-function AddProduct({ addProduct,products,setProducts,token }) {
+function AddProduct({ addProduct, products, setProducts, token }) {
   const [id, setId] = useState("");
   const [title, setNom] = useState("");
   const [info, setInfo] = useState("");
@@ -11,14 +11,12 @@ function AddProduct({ addProduct,products,setProducts,token }) {
   const [promo, setPromo] = useState("");
   const [count, setCount] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-    const [uploadStatus, setUploadStatus] = useState("");
-    console.log(selectedFile)
+  const [uploadStatus, setUploadStatus] = useState("");
+  console.log(selectedFile);
 
-    
-  
-    const handleFileChange = (e) => {
-      setSelectedFile(e.target.files[0]);
-    };
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,49 +30,61 @@ function AddProduct({ addProduct,products,setProducts,token }) {
     formData.append("image", selectedFile);
 
     try {
-      const response1 = await axios.post("https://ecomm-backend-6vi2.onrender.com/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response1 = await axios.post(
+        "https://ecomm-backend-6vi2.onrender.com/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setUploadStatus("Téléchargement réussi : " + response1.data);
 
-      const response2 = await axios.post('https://ecomm-backend-6vi2.onrender.com/produits', {
-        id,
-        category_id,
-        title,
-        img: "/img/"+response1.data,
-        promo,
-        price,
-        info,
-        count,
-        total: price * count,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response2 = await axios.post(
+        "https://ecomm-backend-6vi2.onrender.com/produits",
+        {
+          id,
+          category_id,
+          title,
+          img: "/img/" + response1.data,
+          promo,
+          price,
+          info,
+          count,
+          total: price * count,
         },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
     } catch (error) {
       setUploadStatus("Erreur lors du téléchargement.");
       console.error(error);
       console.error("Erreur d'ajout du produit", error);
     }
 
-
-      setNom("");
-      setInfo("");
-      setPrice("");
-      setCategorieId("");
-      setImg("");
-      setPromo("");
-      setCount("");
-    
+    setNom("");
+    setInfo("");
+    setPrice("");
+    setCategorieId("");
+    setImg("");
+    setPromo("");
+    setCount("");
   };
 
   return (
     <div className="container mb-10">
-        <AdminPrincipal name={"Ajout"} title={"Produit"}/>
-      <form onSubmit={handleSubmit} className="text-center" action="/upload" method="POST" encType="multipart/form-data">
+      <AdminPrincipal name={"Ajout"} title={"Produit"} />
+      <form
+        onSubmit={handleSubmit}
+        className="text-center"
+        action="/upload"
+        method="POST"
+        encType="multipart/form-data"
+      >
         NUM:
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
@@ -125,7 +135,7 @@ function AddProduct({ addProduct,products,setProducts,token }) {
         <input
           className="block m-auto w-[400px] rounded h-[35px] mb-3"
           type="file"
-          name="image" 
+          name="file"
           accept="image/*"
           placeholder="Image"
           value={img}
