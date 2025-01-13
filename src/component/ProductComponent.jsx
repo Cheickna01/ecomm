@@ -47,7 +47,7 @@ export default function ProductComponent({ produits,utoken,setCloseModal }) {
             <Link to={"/home/" + produits.id}>
               <img  
                 className="pic-1 img-responsive"
-                src={produits.img? produits.img : "https://tyshop.netlify.app/img/img/273800-p5v8j7-289.jpg"}
+                src={produits.img.endsWith("jpg") || produits.img.endsWith("png") ? "/img"+produits.img : "https://tyshop.netlify.app/img/img/273800-p5v8j7-289.jpg"}
                 alt="Produit"
               />
 
