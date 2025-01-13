@@ -27,7 +27,7 @@ export default function AdminProductComponent({ produits,deleteProduct,actions }
             <Link to={"/home/"+produits.id}>
               <img
                 className="pic-1 img-responsive"
-                src={produits.img? "/img/" + produits.img : "/img/img/273800-P5V8J7-289.jpg"}
+                src={produits.img? produits.img : "/img/img/273800-P5V8J7-289.jpg"}
                 alt="Produit"
               />
 

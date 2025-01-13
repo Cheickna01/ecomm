@@ -47,7 +47,7 @@ function AddProduct({ addProduct, products, setProducts, token }) {
           id,
           category_id,
           title,
-          img: "/img/" + response1.data.fileUrl,
+          img: response1.data.fileUrl,
           promo,
           price,
           info,
