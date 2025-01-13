@@ -8,7 +8,6 @@ export default function UserUpdate({ utoken }) {
   const params = useParams();
   const uemail = params.email;
   const [submited, setSubmited] = useState("");
-  const [Validation, setValidation] = useState("");
   const [pseudo, setPseudo] = useState("");
   const [mdp, setMdp] = useState("");
   const [cmdp, setCmdp] = useState("");

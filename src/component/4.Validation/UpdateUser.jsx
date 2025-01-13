@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Pseudo from "./Pseudo";
 import Mdp from "./Mdp";
@@ -8,7 +8,6 @@ export default function UpdateUser({ token }) {
   const params = useParams();
   const uemail = params.email;
   const [submited, setSubmited] = useState("");
-  const [Validation, setValidation] = useState("");
   const [pseudo, setPseudo] = useState("");
   const [mdp, setMdp] = useState("");
   const [cmdp, setCmdp] = useState("");
@@ -22,7 +21,7 @@ export default function UpdateUser({ token }) {
       pseudo.length >= 3 &&
       mdp.length >= 6 &&
       /\d/.test(mdp) &&
-      cmdp == mdp
+      cmdp === mdp
     ) {
       console.log("Formulaire envoyé!!!");
       if (window.confirm("Voulez-vous enregistrer les modifications?")) {

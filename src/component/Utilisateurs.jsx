@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import AdminPrincipal from "./AdminPrincipal";
-import Title from "./TitleComponents";
 
 export default function Utilisateurs({ token }) {
   const [users, setUsers] = useState("");

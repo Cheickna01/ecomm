@@ -1,10 +1,9 @@
-import { useState } from "react"
 
 
 export default function Cmdp({submited,mdp,cmdpp,setCmdpp}) {
 
     function cmdp_val(){
-        if(submited && cmdpp != mdp){
+        if(submited && cmdpp !== mdp){
             return false
         }
         else{

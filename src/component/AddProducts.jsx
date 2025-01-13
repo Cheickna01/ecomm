@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"
 import AdminPrincipal from "./AdminPrincipal";
-import { storeCategory } from "../shared/data";
 function AddProduct({ addProduct,products,setProducts,token }) {
   const [id, setId] = useState("");
   const [title, setNom] = useState("");
