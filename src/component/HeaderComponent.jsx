@@ -25,7 +25,7 @@ export default function Header({
   setUToken,
   closeModal,
   setCloseModal,
-  seToken
+  setToken
 }) {
   const panier_count = useSelector((state) => state.Cart.cart.length);
   const panier = useSelector((state) => state.Cart.cart);
@@ -69,14 +69,15 @@ export default function Header({
         });
         if (response.data.token) {
           if(response.data.user.role === "admin"){
-            seToken(response.data.token)
+            setToken(response.data.token)
             setUsername(response.data.user.nom);
-          setError("")
-          setCloseModal(false);
+            setError("")
+            setCloseModal(false);
           }else{
             setUToken(response.data.token);
             setUsername(response.data.user.nom);
             setError("")
+            console.log(response.data.user.role)
             setCloseModal(false);
           }
           
