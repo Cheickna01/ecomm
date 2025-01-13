@@ -12,7 +12,6 @@ function AddProduct({ addProduct, products, setProducts, token }) {
   const [count, setCount] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
-  console.log(selectedFile);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -81,7 +80,6 @@ function AddProduct({ addProduct, products, setProducts, token }) {
       <form
         onSubmit={handleSubmit}
         className="text-center"
-        action="https://ecomm-backend-6vi2.onrender.com/upload"
         method="POST"
         encType="multipart/form-data"
       >
