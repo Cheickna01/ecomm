@@ -40,7 +40,7 @@ export default function Header({
 
   async function fetching() {
     if (register) {
-      fetch("http://localhost:4002/inscription", {
+      fetch("https://ecomm-backend-6vi2.onrender.com/inscription", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export default function Header({
         });
     } else {
       try {
-        const response = await axios.post("http://localhost:4002/login", {
+        const response = await axios.post("https://ecomm-backend-6vi2.onrender.com/login", {
           email: Datas.email,
           mot_de_passe: Datas.password,
         });

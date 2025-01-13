@@ -6,7 +6,7 @@ import AdminPrincipal from "./AdminPrincipal";
 export default function Utilisateurs({ token }) {
   const [users, setUsers] = useState("");
   useEffect(() => {
-    fetch("http://localhost:4002/utilisateurs", {
+    fetch("https://ecomm-backend-6vi2.onrender.com/utilisateurs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default function Utilisateurs({ token }) {
 
   function handleDelete(email) {
     if (window.confirm("Voulez-vous supprimer cet Utilisateur?")) {
-      fetch(`http://localhost:4002/deleteUser/${email}`, {
+      fetch(`https://ecomm-backend-6vi2.onrender.com/deleteUser/${email}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

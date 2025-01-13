@@ -25,7 +25,7 @@ export default function UserUpdate({ utoken }) {
     ) {
       console.log("Formulaire envoyé!!!");
       if (window.confirm("Voulez-vous enregistrer les modifications?")) {
-        fetch(`http://localhost:4002/userUpdate/${uemail}`, {
+        fetch(`https://ecomm-backend-6vi2.onrender.com/userUpdate/${uemail}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

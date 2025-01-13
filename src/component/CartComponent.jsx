@@ -21,7 +21,7 @@ export default function CartComponent({ utoken, userProduct, setUserProduct }) {
 
   function handleConfirm() {
     if (userProduct.length > 0 && window.confirm("Voulez-vous vraiment confirmer ce panier?")) {
-      fetch("http://localhost:4002/commande/ajouter", {
+      fetch("https://ecomm-backend-6vi2.onrender.com/commande/ajouter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

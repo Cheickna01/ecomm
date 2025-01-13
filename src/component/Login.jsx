@@ -9,7 +9,7 @@ function Login({ setToken }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4002/login", {
+      const response = await axios.post("https://ecomm-backend-6vi2.onrender.com/login", {
         email,
         mot_de_passe: password,
       });

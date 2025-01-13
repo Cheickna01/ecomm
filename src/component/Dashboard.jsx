@@ -10,7 +10,7 @@ function Dashboard({ token,produits }) {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:4002/list', {
+      const response = await axios.get('https://ecomm-backend-6vi2.onrender.com/list', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -25,7 +25,7 @@ function Dashboard({ token,produits }) {
   
   const addProduct = async (product) => {
     try {
-      const response = await axios.post('http://localhost:4002/produits', product, {
+      const response = await axios.post('https://ecomm-backend-6vi2.onrender.com/produits', product, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,7 +38,7 @@ function Dashboard({ token,produits }) {
 
   const deleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://localhost:4002/produits/${productId}`, {
+      await axios.delete(`https://ecomm-backend-6vi2.onrender.com/produits/${productId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

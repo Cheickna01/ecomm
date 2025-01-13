@@ -30,7 +30,7 @@ export default function Main() {
   const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
-      fetch("http://localhost:4002/list", {
+      fetch("https://ecomm-backend-6vi2.onrender.com/list", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export default function Main() {
 
   useEffect(() => {
     if (utoken) {
-      fetch("http://localhost:4002/commandelist", {
+      fetch("https://ecomm-backend-6vi2.onrender.com/commandelist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -25,7 +25,7 @@ export default function UpdateUser({ token }) {
     ) {
       console.log("Formulaire envoyé!!!");
       if (window.confirm("Voulez-vous enregistrer les modifications?")) {
-        fetch(`http://localhost:4002/updateUser/${uemail}`, {
+        fetch(`https://ecomm-backend-6vi2.onrender.com/updateUser/${uemail}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

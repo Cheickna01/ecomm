@@ -9,7 +9,7 @@ export default function CartItemComponent({produit,userProduct,utoken}) {
     const {id,title,img,promo,price,inCart,count,total} = produit
 
     function handlerem(){
-      fetch(`http://localhost:4002/achats/decrementer/${produit.id}`,{
+      fetch(`https://ecomm-backend-6vi2.onrender.com/achats/decrementer/${produit.id}`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

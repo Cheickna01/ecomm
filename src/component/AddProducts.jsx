@@ -32,14 +32,14 @@ function AddProduct({ addProduct,products,setProducts,token }) {
     formData.append("image", selectedFile);
 
     try {
-      const response1 = await axios.post("http://localhost:4002/upload", formData, {
+      const response1 = await axios.post("https://ecomm-backend-6vi2.onrender.com/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
       setUploadStatus("Téléchargement réussi : " + response1.data);
 
-      const response2 = await axios.post('http://localhost:4002/produits', {
+      const response2 = await axios.post('https://ecomm-backend-6vi2.onrender.com/produits', {
         id,
         category_id,
         title,

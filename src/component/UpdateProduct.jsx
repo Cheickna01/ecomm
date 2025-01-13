@@ -25,7 +25,7 @@ export default function UpdateProduct({ token, produits }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (window.confirm("voulez-vous enregistrer les modifications?")) {
-      fetch(`http://localhost:4002/produits/update/${productID}`, {
+      fetch(`https://ecomm-backend-6vi2.onrender.com/produits/update/${productID}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

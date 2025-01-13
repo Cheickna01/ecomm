@@ -29,7 +29,7 @@ export default function ContactComponent({ Datas, setDatas }) {
 
     if (validationCheck()) {
       try {
-        const response = await axios.post("http://localhost:4002/send-email", {
+        const response = await axios.post("https://ecomm-backend-6vi2.onrender.com/send-email", {
           prenom,
           nom,
           email,

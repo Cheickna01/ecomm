@@ -5,7 +5,7 @@ export default function AdminProductList({ LesProduits, token, setProducts }) {
   const deleteProduct = async (productId) => {
     if (window.confirm("Voulez-vous supprimer ce produit?")) {
       try {
-        await axios.delete(`http://localhost:4002/produits/${productId}`, {
+        await axios.delete(`https://ecomm-backend-6vi2.onrender.com/produits/${productId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

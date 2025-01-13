@@ -6,7 +6,7 @@ export default function Commandes({ token }) {
   const [lescommandes, setCommandes] = useState("");
   console.log(lescommandes);
   useEffect(() => {
-    fetch("http://localhost:4002/lescommandes", {
+    fetch("https://ecomm-backend-6vi2.onrender.com/lescommandes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default function Commandes({ token }) {
 
   function handledelete(id) {
     if (window.confirm("Voulez-vous supprimer la commande?")) {
-      fetch(`http://localhost:4002/deletecommande/${id}`, {
+      fetch(`https://ecomm-backend-6vi2.onrender.com/deletecommande/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

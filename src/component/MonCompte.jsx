@@ -7,7 +7,7 @@ export default function MonCompte({ utoken, setUToken }) {
   const [info, setInfo] = useState("");
   const [res, setRes] = useState("");
   useEffect(() => {
-    fetch("http://localhost:4002/moncompte", {
+    fetch("https://ecomm-backend-6vi2.onrender.com/moncompte", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export default function MonCompte({ utoken, setUToken }) {
 
   function handledelete() {
     if (window.confirm("Voulez-vous vraiment supprimer le compte?")) {
-      fetch(`http://localhost:4002/deleteCompte/${info.email}`, {
+      fetch(`https://ecomm-backend-6vi2.onrender.com/deleteCompte/${info.email}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
