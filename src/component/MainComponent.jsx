@@ -76,6 +76,7 @@ export default function Main() {
           setUToken={setUToken}
           closeModal={closeModal}
           setCloseModal={setCloseModal}
+          setToken={setToken}
         />
       ) : (
         <AdminHeader
