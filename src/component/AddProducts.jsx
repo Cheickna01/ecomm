@@ -26,7 +26,7 @@ function AddProduct({ addProduct, products, setProducts, token }) {
     }
 
     const formData = new FormData();
-    formData.append("image", selectedFile);
+    formData.append("file", selectedFile);
 
     try {
       const response1 = await axios.post(
@@ -136,7 +136,6 @@ function AddProduct({ addProduct, products, setProducts, token }) {
           name="file"
           accept="image/*"
           placeholder="Image"
-          value={img}
           onChange={handleFileChange}
         />
         PROMO:
