@@ -21,6 +21,7 @@ import AdminSearchComponent from "./AdminSearchComponent";
 import MonCompte from "./MonCompte";
 import UserUpdate from "./UserUpdate";
 import Footer from "./Footer";
+import { Helmet } from 'react-helmet';
 export default function Main() {
   const [produits, setProduits] = useState();
   const [token, setToken] = useState("");
@@ -71,6 +72,12 @@ export default function Main() {
 
   return (
     <>
+      <Helmet>
+      <title>Ty-Shop</title>
+      <meta name="description" content="Tyshop vous offre des produits de qualités indiscutables."/>
+      <meta name="keywords" content="tyshop, boutique en ligne, shop training"/>
+      <meta name="author" content="Hamalla Diaby"/>
+      </Helmet>
       {!token ? (
         <Header
           utoken={utoken}
