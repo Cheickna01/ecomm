@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+TyShop est une plateforme de commerce en ligne développée avec React.js et Node.js. Elle permet aux utilisateurs de parcourir, rechercher et acheter des produits en toute simplicité.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 Fonctionnalités
 
-## Available Scripts
+Affichage des produits avec catégories
 
-In the project directory, you can run:
+Panier d'achat et gestion des commandes
 
-### `npm start`
+Authentification des utilisateurs (inscription et connexion)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Intégration d'un backend pour la gestion des produits
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🛠️ Technologies utilisées
 
-### `npm test`
+Frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React.js (Framework principal)
 
-### `npm run build`
+Tailwind CSS (Stylisation)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React Router (Navigation)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Axios (Requêtes API)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend
 
-### `npm run eject`
+Node.js & Express.js (Serveur backend)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+MongoDB & Mongoose (Base de données)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+JWT & Bcrypt (Sécurité et authentification)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+📦 Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Frontend
 
-## Learn More
+Cloner le dépôt
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+git clone https://github.com/cheickna01/ecomm.git
+cd tyshop-frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Installer les dépendances
 
-### Code Splitting
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Lancer l'application
 
-### Analyzing the Bundle Size
+npm run dev
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Backend
 
-### Making a Progressive Web App
+Cloner le dépôt
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+git clone https://github.com/cheickna01/ecomm-backend.git
+cd tyshop-backend
 
-### Advanced Configuration
+Installer les dépendances
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+npm install
 
-### Deployment
+Configurer les variables d'environnement
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+PORT=4000
+MONGO_URI=mongodb://localhost:27017/tyshop
+JWT_SECRET="secret"
 
-### `npm run build` fails to minify
+Lancer le serveur
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm start
+
+📡 Déploiement
+
+Le site est déployé sur Netlify : [TyShop](https://tyshop.netlify.app/)
+
+🤝 Contribuer
+
+Les contributions sont les bienvenues !
+
+Fork le projet
+
+Crée une branche feature (git checkout -b feature-ma-fonctionnalite)
+
+Commit tes modifications (git commit -m 'Ajout de ma fonctionnalité')
+
+Push vers GitHub (git push origin feature-ma-fonctionnalite)
+
+Ouvre une Pull Request
+
+https://tyshop.netlify.app/
